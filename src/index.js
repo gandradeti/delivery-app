@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { Mongo } from '../database/mongo.js';
 import { config } from 'dotenv';
+import authRouter from '../src/auth/auth.js';
 
 config();
 
@@ -31,6 +32,7 @@ console.log(mongoConection);
     });
   });
 
+  app.use('/auth', authRouter);
   app.listen(port, () => {
     console.log(`Server running at http://${hostname}:${port}/`);
   })
